@@ -4,10 +4,10 @@ function Dashbord() {
         <div className="navbar">
         <h1>Attendance System</h1>
          <h3>Dashbord</h3>
+         <h3>Principal</h3>
+         <h3>HOD</h3>
+         <h3>Teacher</h3>
          <h3>Student</h3>
-         <h3>Attendance History</h3>
-         <h3>Subject</h3>
-         <h3>Profile</h3>
          <h3>Logout</h3></div>
         <div>
          <h4>here is a quick overview of a Attendance</h4> 
@@ -17,12 +17,9 @@ function Dashbord() {
             <h2 className="third-year">third year</h2>
             <h2 className="final-year">final year</h2>
          </div>
-         <div className="year">
-            <h2 className="first-year">Add Student </h2>
-            <h2 className="second-year">Edit Student</h2>
-            <h2 className="third-year">Delete Student</h2>
-            <h2 className="final-year">Delete Batch</h2>
-         </div>
+          <div>
+            <h1>Student Data</h1> <span>view all</span>
+          </div>
         </div>
         </>
     )
