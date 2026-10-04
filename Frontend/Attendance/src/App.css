@@ -38,8 +38,9 @@ width: 700px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin: 90px;
+    margin: 40px;
     border-radius: 10px;
+    padding: 10px;
 }
 .welcome-box {
   display: flex;
@@ -65,4 +66,61 @@ width: 700px;
   cursor: pointer;
   border-radius: 5px;
   border: none;
+}
+.navbar{
+  background-color: rgb(38, 38, 105);
+  display: flex;
+  gap: 25px;
+  align-items: center;
+  color: white;
+}
+.year{
+  display: flex;
+ align-items: center;
+ justify-content: center;
+ gap: 50px;
+ background-color: yellow;
+}
+.first-year{
+ background-color: gray;
+ height: 150px; 
+ width: 200px;
+ display: flex;
+ align-items: center;
+ justify-content: center  ;
+ border-radius: 8px;
+ cursor: pointer;
+
+}
+.second-year{ 
+  background-color: gray;
+ height: 150px; 
+ width: 200px;
+ display: flex;
+ align-items: center;
+ justify-content: center  ;
+ border-radius: 8px;
+cursor: pointer;
+
+}
+.third-year{ 
+  background-color: gray;
+ height: 150px; 
+ width: 200px;
+ display: flex;
+ align-items: center;
+ justify-content: center  ;
+ border-radius: 8px;
+cursor: pointer;
+
+}
+.final-year{
+   background-color: gray;
+ height: 150px; 
+ width: 200px;
+ display: flex;
+ align-items: center;
+ justify-content: center  ;
+  border-radius: 8px;
+cursor: pointer;
 }
