@@ -11,7 +11,7 @@ function NotFound() {
 
         <h2>Oops! Page Not Found</h2>
 
-        <p>
+        <p> 
           The page you are looking for might have been removed
           or is temporarily unavailable.
         </p>

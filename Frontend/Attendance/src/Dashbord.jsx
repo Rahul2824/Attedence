@@ -1,29 +1,42 @@
+import { useState } from "react";
+import  Firstyeardata  from "./Firstyeardata";
+import Secondyeardata from "./secondyeardata";
+import Thirdyeardata from "./Thirdyeardata";
+import Finalyeardata from "./Finalyeardata";
+function Dashbord() {
+  const [showyeardata, setshowyeardata] = useState(false);
+  
+  
 
-function Dashbord({Firstyeardata}) {
-    return(
-        <>
-        <div className="navbar">
+  return (
+    <>
+      <div className="navbar">
         <h1>Attendance System</h1>
-         <h3>Dashbord</h3>
-         <h3>Principal</h3>
-         <h3>HOD</h3>
-         <h3>Teacher</h3>
-         <h3>Student</h3>
-         <h3>Logout</h3></div>
-        <div>
-         <h4>here is a quick overview of a Attendance</h4> 
-         <div className="year">
-         <h2 className="first-year" onClick={Firstyeardata}>first year</h2>
-         <h2 className="second-year">second year</h2>
-         <h2 className="third-year">third year</h2>
-         <h2 className="final-year">final year</h2>
-                 </div>
-          <div>
-            <h1>Student Data</h1> <span>view all</span>
-          <div> </div> 
-          </div>
+        <h3>Dashbord</h3>
+        <h3>Principal</h3>
+        <h3>HOD</h3>
+        <h3>Teacher</h3>
+        <h3>Student</h3>
+        <h3>Logout</h3></div>
+      <div>
+        <h4>here is a quick overview of a Attendance</h4>
+        <div className="year">
+          <h2 className="first-year" onClick={() => setshowyeardata("First")}>First Year</h2>
+          <h2 className="second-year" onClick={()=>setshowyeardata("Second")}>second year</h2>
+          <h2 className="third-year" onClick={()=>setshowyeardata("Third")}>third year</h2>
+          <h2 className="final-year" onClick={()=>setshowyeardata("Final")}>final year</h2>
         </div>
-        </>
-    )
+        <div>
+          <h1>Student Data</h1> <span>view all</span>
+          <div>   {showyeardata === "First"&& <Firstyeardata/>} 
+                  {showyeardata === "Second" &&<Secondyeardata/>}
+                  {showyeardata === "Third" &&<Thirdyeardata/>}
+                  {showyeardata === "Final" &&<Finalyeardata/>}
+
+</div>
+        </div>
+      </div>
+    </>
+  )
 }
-export default Dashbord ;
+export default Dashbord;

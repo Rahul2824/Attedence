@@ -1,11 +1,9 @@
 import { Routes ,Route } from "react-router-dom";
-import { useState } from "react";
 import './App.css'
 import Dashbord from './Dashbord'
 import Logine from "./Logine"
 import NotFound from "./NotFound"
 function App() {
-  const [Firstyeardata, setFirstyeardata] = useState(false);
 
   return (
     <>
