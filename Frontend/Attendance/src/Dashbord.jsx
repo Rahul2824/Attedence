@@ -17,7 +17,9 @@ function Dashbord() {
         <h3>HOD</h3>
         <h3>Teacher</h3>
         <h3>Student</h3>
-        <h3>Logout</h3></div>
+        <h3>Logout</h3>
+        <input type="search" placeholder="Find Student..."/>
+        </div>
       <div>
         <h4>here is a quick overview of a Attendance</h4>
         <div className="year">

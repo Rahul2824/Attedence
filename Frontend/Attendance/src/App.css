@@ -223,29 +223,24 @@ cursor: pointer;
   right: 20%;
   animation-delay: 2s;
 }
-
-.student-table {
-  margin-top: 20px;
+.student-table{
+ margin-top: 20px;
+}
+.student-table table{
+  width: 100%;  
+ border-collapse: collapse;
 }
 
-.student-table table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.student-table th,
-.student-table td {
+.student-table th ,td{
   border: 1px solid #ddd;
   padding: 12px;
   text-align: left;
 }
 
-.student-table th {
-  background-color: #f2f2f2;
+
+.student-table th{
+background-color: #f2f2f2;
 }
-
-
-
 
 /* Animations */
 
