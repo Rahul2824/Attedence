@@ -224,6 +224,29 @@ cursor: pointer;
   animation-delay: 2s;
 }
 
+.student-table {
+  margin-top: 20px;
+}
+
+.student-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.student-table th,
+.student-table td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: left;
+}
+
+.student-table th {
+  background-color: #f2f2f2;
+}
+
+
+
+
 /* Animations */
 
 @keyframes fadeIn {
