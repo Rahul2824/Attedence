@@ -1,4 +1,5 @@
-function Dashbord() {
+
+function Dashbord({Firstyeardata}) {
     return(
         <>
         <div className="navbar">
@@ -12,13 +13,14 @@ function Dashbord() {
         <div>
          <h4>here is a quick overview of a Attendance</h4> 
          <div className="year">
-            <h2 className="first-year">first year</h2>
-            <h2 className="second-year">second year</h2>
-            <h2 className="third-year">third year</h2>
-            <h2 className="final-year">final year</h2>
-         </div>
+         <h2 className="first-year" onClick={Firstyeardata}>first year</h2>
+         <h2 className="second-year">second year</h2>
+         <h2 className="third-year">third year</h2>
+         <h2 className="final-year">final year</h2>
+                 </div>
           <div>
             <h1>Student Data</h1> <span>view all</span>
+          <div> </div> 
           </div>
         </div>
         </>
