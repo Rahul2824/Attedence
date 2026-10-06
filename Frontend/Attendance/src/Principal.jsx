@@ -3,20 +3,20 @@ import  Firstyeardata  from "./Firstyeardata";
 import Secondyeardata from "./secondyeardata";
 import Thirdyeardata from "./Thirdyeardata";
 import Finalyeardata from "./Finalyeardata";
-import {Link} from "react-router-dom"
-function Dashbord() {
+import HODlist from "./HODlist";
+function Principal() {
   const [showyeardata, setshowyeardata] = useState(false);
   
   
 
   return (
     <>
-      <div className="navbar">
-       <h1>Attendance System</h1>
+      <div className="navbar">  
+        <h1>Attendance System</h1>
         <h3>Dashbord</h3>
-     <Link to="/Principal"><h3 style={{color:"White", textDecoration:"none"}}>Principal</h3></Link>    
-      <Link to="/HOD"><h3 style={{color:"White", textDecoration:"none"}}>HOD</h3></Link>
-     <Link to="/Teacher"><h3 style={{color:"White", textDecoration:"none"}}>Teacher</h3></Link>   
+        <h3>Principal</h3>
+        <h3>HOD</h3>
+        <h3>Teacher</h3>
         <h3>Student</h3>
         <h3>Logout</h3>
         <input type="search" placeholder="Find Student..."/>
@@ -28,6 +28,7 @@ function Dashbord() {
           <h2 className="second-year" onClick={()=>setshowyeardata("Second")}>second year</h2>
           <h2 className="third-year" onClick={()=>setshowyeardata("Third")}>third year</h2>
           <h2 className="final-year" onClick={()=>setshowyeardata("Final")}>final year</h2>
+          <h2 className="final-year" onClick={()=>setshowyeardata("HOD")}>HOD</h2>
         </div>
         <div>
           <h1>Student Data</h1> <span>view all</span>
@@ -35,6 +36,7 @@ function Dashbord() {
                   {showyeardata === "Second" &&<Secondyeardata/>}
                   {showyeardata === "Third" &&<Thirdyeardata/>}
                   {showyeardata === "Final" &&<Finalyeardata/>}
+                  {showyeardata === "HOD" &&<HODlist/>}
 
 </div>
         </div>
@@ -42,4 +44,4 @@ function Dashbord() {
     </>
   )
 }
-export default Dashbord;
+export default Principal;
