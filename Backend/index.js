@@ -1,5 +1,8 @@
-require("dotenv").config();
+const dns = require("dns");
 
+dns.setServers(["8.8.8.8", "1.1.1.1"]);
+
+require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const { MongoClient } = require("mongodb");
@@ -12,7 +15,10 @@ app.use(express.json());
 const PORT = process.env.PORT || 5000;
 const url = process.env.MONGO_URL;
 
-const client = new MongoClient(url);
+const client = new MongoClient(url, {
+  serverSelectionTimeoutMS: 10000,
+  tls: true
+});
 
 const dbname = "Collage-Data";
 const collectionname = "Principal";
@@ -24,7 +30,6 @@ async function connection() {
     console.log("MongoDB Connected Successfully");
 
     return client.db(dbname);
-
   } catch (error) {
     console.log("MongoDB Connection Error:", error);
     throw error;
@@ -42,7 +47,6 @@ app.get("/Collage-Data/Principal", async (req, resp) => {
     console.log("DATA FROM MONGODB:", data);
 
     resp.status(200).json(data);
-
   } catch (error) {
     console.log("GET ERROR:", error);
 
