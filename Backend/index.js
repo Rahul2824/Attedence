@@ -1,8 +1,10 @@
 const dns = require("dns");
 
 dns.setServers(["8.8.8.8", "1.1.1.1"]);
+dns.setDefaultResultOrder("ipv4first");
 
 require("dotenv").config();
+
 const express = require("express");
 const cors = require("cors");
 const { MongoClient } = require("mongodb");
@@ -15,10 +17,7 @@ app.use(express.json());
 const PORT = process.env.PORT || 5000;
 const url = process.env.MONGO_URL;
 
-const client = new MongoClient(url, {
-  serverSelectionTimeoutMS: 10000,
-  tls: true
-});
+const client = new MongoClient(url);
 
 const dbname = "Collage-Data";
 const collectionname = "Principal";
