@@ -6,6 +6,7 @@ import NotFound from "./NotFound"
 import Principal from "./Principal";
 import HOD from "./HOD";
 import Teacher from "./Teacher";
+import AddStudent from "./Addstudent";
 function App() {
 
   return (
@@ -17,6 +18,7 @@ function App() {
        <Route path="/Principal" element={<Principal/>}/>
        <Route path="/HOD" element={<HOD/>}/>
        <Route path="/Teacher" element={<Teacher/>}/>
+       <Route path="/AddStudent" element={<AddStudent/>}/>
     </Routes>
 
 
