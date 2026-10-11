@@ -77,7 +77,7 @@ function Firstyeardata() {
                     )
                   }
                 >
-                  {student.status || "Mark Attendance"}
+                  {student.status || "Absent"}
                 </button>
               </td>
             </tr>
