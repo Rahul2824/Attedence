@@ -290,6 +290,185 @@ background-color: #f2f2f2;
   border-radius: 5px;
   cursor: pointer;
 }
+.student-container {
+  width: 90%;
+  max-width: 1100px;
+  margin: 30px auto;
+  padding: 30px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  box-sizing: border-box;
+}
+
+.student-container h2 {
+  color: #1e293b;
+  font-size: 28px;
+  margin: 0 0 8px;
+}
+
+.student-container p {
+  color: #64748b;
+  margin-bottom: 25px;
+  font-size: 15px;
+}
+
+.student-container h3 {
+  color: #1e293b;
+  margin: 35px 0 18px;
+  font-size: 21px;
+}
+
+/* Student Form */
+
+.student-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 20px;
+  padding: 25px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+}
+
+.student-form label {
+  color: #334155;
+  font-size: 14px;
+  font-weight: 600;
+  margin-top: 5px;
+}
+
+.student-form input,
+.student-form select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 7px;
+  background: #ffffff;
+  color: #1e293b;
+  font-size: 14px;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.student-form input:focus,
+.student-form select:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+/* Add Student Button */
+
+.student-form button[type="submit"] {
+  grid-column: 1 / -1;
+  margin-top: 12px;
+  padding: 13px;
+  background: #2563eb;
+  color: #ffffff;
+  border: none;
+  border-radius: 7px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.student-form button[type="submit"]:hover {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+}
+
+/* Student Table */
+
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid #e2e8f0;
+  border-radius: 9px;
+}
+
+.student-table {
+  width: 100%;
+  min-width: 650px;
+  border-collapse: collapse;
+  background: #ffffff;
+}
+
+.student-table th {
+  padding: 15px 18px;
+  background: #1e293b;
+  color: #ffffff;
+  text-align: left;
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.student-table td {
+  padding: 14px 18px;
+  color: #475569;
+  font-size: 14px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.student-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.student-table tbody tr:hover {
+  background: #f8fafc;
+}
+
+/* Empty Student List */
+
+.student-table td[colspan="5"] {
+  padding: 25px;
+  text-align: center;
+  color: #64748b;
+}
+
+/* Delete Button */
+
+.delete-btn {
+  padding: 8px 14px;
+  background: #fee2e2;
+  color: #b91c1c;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.delete-btn:hover {
+  background: #fecaca;
+}
+
+/* Responsive Design */
+
+@media (max-width: 650px) {
+  .student-container {
+    width: 95%;
+    padding: 18px;
+    margin: 15px auto;
+  }
+
+  .student-container h2 {
+    font-size: 23px;
+  }
+
+  .student-form {
+    grid-template-columns: 1fr;
+    padding: 16px;
+    gap: 10px;
+  }
+
+  .student-form button[type="submit"] {
+    grid-column: auto;
+  }
+}
 /* Animations */
 
 @keyframes fadeIn {
