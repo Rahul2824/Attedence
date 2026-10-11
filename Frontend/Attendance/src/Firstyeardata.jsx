@@ -40,10 +40,11 @@ function Firstyeardata() {
 
   return (
     <div className="student-table">
+      <div className="add">
       <h1>This is First Year Data</h1>
-
+               <button>+</button></div>
       <table>
-        <thead>
+        <thead> 
           <tr>
             <th>Roll Number</th>
             <th>Name of the Student</th>
@@ -60,7 +61,7 @@ function Firstyeardata() {
               <td>{student.name}</td>
               <td>{student.year}</td>
               <td>{student.prn}</td>
-
+              
               <td>
                 <button
                   className={
