@@ -1,5 +1,5 @@
 import { useState } from "react";
-import  axios  from "axios";
+import axios from "axios";
 function AddStudent() {
   const [students, setStudents] = useState([]);
 
@@ -9,7 +9,6 @@ function AddStudent() {
   const [year, setYear] = useState("First Year");
 
   const addStudent = async (e) => {
-  
     e.preventDefault();
 
     const newStudent = {
@@ -19,11 +18,6 @@ function AddStudent() {
       email,
       year,
     };
-    const result = await axios.post(
-"mongodb://rahulpatil121734_db_user:F0F8jWKLj1ENTqdE@attendance.1npqgpb.mongodb.net/?appName=Attendance/Collage-Data/First-year-Data",
-  newStudent
-);
-console.log(result.data);
 
     setStudents((prev) => [...prev, newStudent]);
 
@@ -31,12 +25,15 @@ console.log(result.data);
     setRollNo("");
     setEmail("");
     setYear("First Year");
-  };
+
+    const result = await axios.post("http://localhost:5000/api/students",newStudent)
+    console.log(result.data)};
 
   const deleteStudent = (id) => {
     setStudents((prev) =>
       prev.filter((student) => student.id !== id)
     );
+      
   };
 
   return (
@@ -82,10 +79,11 @@ console.log(result.data);
          
         </select>
 
-        <button type="submit" onClick={addStudent}>+ Add Student</button>
+        <button type="submit">+ Add Student</button>
       </form>
 
       <h3>Student List ({students.length})</h3>
+
       <div className="table-wrapper">
         <table className="student-table">
           <thead>
@@ -114,7 +112,8 @@ console.log(result.data);
                     <button
                       type="button"
                       className="delete-btn"
-                      onClick={() => deleteStudent(student.id)}>
+                      onClick={() => deleteStudent(student.id)}
+                    >
                       Delete
                     </button>
                   </td>

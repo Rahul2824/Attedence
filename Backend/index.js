@@ -13,7 +13,11 @@ const { MongoClient } = require("mongodb");
 const app = express();
 app.use(cors());
 app.use(express.json());
-
+app.use(cors({
+  origin: [
+    "http://localhost:5173"
+  ]
+}));
 const PORT = process.env.PORT || 5000;
 const url = process.env.MONGO_URL;
 
@@ -32,20 +36,53 @@ async function Connection() {
   }
 }
 
-app.listen(PORT,()=>{
-  app.get("/Collage-Data/First-year-Data",async(req,resp)=>{
-    try {
-      const db =await Connection();
-      const collection = db.collection(collectionname)
-       const data = await collection.insertOne({}).toArray();
-  
-       console.log("DATA FROM MONGODB:", data);
-  
-      resp.status(200).json(data);
-    } catch (error) {
-       console.log("GET ERROR:", error);
+app.get("/Collage-Data/Principal",async(req,resp)=>{
+  try {
+    const db =await Connection();
+    const collection = db.collection(collectionname)
+     const data = await collection.find({}).toArray();
+
+     console.log("DATA FROM MONGODB:", data);
+
+    resp.status(200).json(data);
+  } catch (error) {
+     console.log("GET ERROR:", error);
+  }
+})
+app.post("/api/students", async (req, res) => {
+  try {
+    const db = await Connection();
+
+    const { name, rollNo, email, year } = req.body;
+
+    if (!name || !rollNo || !email || !year) {
+      return res.status(400).json({
+        message: "All fields are required"
+      });
     }
-  })
+
+    const result = await db.collection("First-year-Data").insertOne({
+      name,
+      rollNo: Number(rollNo),
+      email,
+      year,
+      createdAt: new Date()
+    });
+
+    res.status(201).json({
+      message: "Student added successfully",
+      studentId: result.insertedId
+    });
+
+  } catch (error) {
+    console.error("Error adding student:", error);
+
+    res.status(500).json({
+      message: "Failed to add student"
+    });
+  }
+});
+app.listen(PORT,()=>{
   console.log(`server is running on PORT ${PORT}`);
   
 })
