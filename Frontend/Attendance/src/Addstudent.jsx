@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import  axios  from "axios";
 function AddStudent() {
   const [students, setStudents] = useState([]);
 
@@ -8,7 +8,8 @@ function AddStudent() {
   const [email, setEmail] = useState("");
   const [year, setYear] = useState("First Year");
 
-  const addStudent = (e) => {
+  const addStudent = async (e) => {
+  
     e.preventDefault();
 
     const newStudent = {
@@ -18,6 +19,11 @@ function AddStudent() {
       email,
       year,
     };
+    const result = await axios.post(
+"mongodb://rahulpatil121734_db_user:F0F8jWKLj1ENTqdE@attendance.1npqgpb.mongodb.net/?appName=Attendance/Collage-Data/First-year-Data",
+  newStudent
+);
+console.log(result.data);
 
     setStudents((prev) => [...prev, newStudent]);
 
@@ -76,11 +82,10 @@ function AddStudent() {
          
         </select>
 
-        <button type="submit">+ Add Student</button>
+        <button type="submit" onClick={addStudent}>+ Add Student</button>
       </form>
 
       <h3>Student List ({students.length})</h3>
-2
       <div className="table-wrapper">
         <table className="student-table">
           <thead>
@@ -109,8 +114,7 @@ function AddStudent() {
                     <button
                       type="button"
                       className="delete-btn"
-                      onClick={() => deleteStudent(student.id)}
-                    >
+                      onClick={() => deleteStudent(student.id)}>
                       Delete
                     </button>
                   </td>

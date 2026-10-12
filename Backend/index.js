@@ -32,20 +32,20 @@ async function Connection() {
   }
 }
 
-app.get("/Collage-Data/Principal",async(req,resp)=>{
-  try {
-    const db =await Connection();
-    const collection = db.collection(collectionname)
-     const data = await collection.find({}).toArray();
-
-     console.log("DATA FROM MONGODB:", data);
-
-    resp.status(200).json(data);
-  } catch (error) {
-     console.log("GET ERROR:", error);
-  }
-})
 app.listen(PORT,()=>{
+  app.get("/Collage-Data/First-year-Data",async(req,resp)=>{
+    try {
+      const db =await Connection();
+      const collection = db.collection(collectionname)
+       const data = await collection.insertOne({}).toArray();
+  
+       console.log("DATA FROM MONGODB:", data);
+  
+      resp.status(200).json(data);
+    } catch (error) {
+       console.log("GET ERROR:", error);
+    }
+  })
   console.log(`server is running on PORT ${PORT}`);
   
 })
