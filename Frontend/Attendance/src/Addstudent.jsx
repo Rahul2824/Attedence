@@ -39,6 +39,14 @@ function AddStudent() {
       <p>Add a new student to the attendance system.</p>
 
       <form onSubmit={addStudent} className="student-form">
+          <label>Roll Number</label>
+        <input
+          type="number"
+          placeholder="Enter roll number"
+          value={rollNo}
+          onChange={(e) => setRollNo(e.target.value)}
+          required
+        />
         <label>Student Name</label>
         <input
           type="text"
@@ -48,19 +56,12 @@ function AddStudent() {
           required
         />
 
-        <label>Roll Number</label>
+      
+
+        <label>PRN</label>
         <input
           type="number"
-          placeholder="Enter roll number"
-          value={rollNo}
-          onChange={(e) => setRollNo(e.target.value)}
-          required
-        />
-
-        <label>Email Address</label>
-        <input
-          type="email"
-          placeholder="Enter email address"
+          placeholder="Enter PRN number"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
@@ -72,16 +73,14 @@ function AddStudent() {
           onChange={(e) => setYear(e.target.value)}
         >
           <option>First Year</option>
-          <option>Second Year</option>
-          <option>Third Year</option>
-          <option>Final Year</option>
+         
         </select>
 
         <button type="submit">+ Add Student</button>
       </form>
 
       <h3>Student List ({students.length})</h3>
-
+2
       <div className="table-wrapper">
         <table className="student-table">
           <thead>

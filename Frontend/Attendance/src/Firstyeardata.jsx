@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import { Link } from "react-router-dom";
 function Firstyeardata() {
   const [students, setStudents] = useState([
     {
@@ -42,7 +42,7 @@ function Firstyeardata() {
     <div className="student-table">
       <div className="add">
       <h1>This is First Year Data</h1>
-               <button>+</button></div>
+           <Link to="/Addstudent" ><button>+</button></Link>    </div>
       <table>
         <thead> 
           <tr>
