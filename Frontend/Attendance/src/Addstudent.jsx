@@ -36,7 +36,7 @@ function AddStudent() {
   return (
     <div className="student-container">
       <h2>Add Student</h2>
-      <p>Add a new student to the attendance system.</p>
+      <p>Add a new student</p>
 
       <form onSubmit={addStudent} className="student-form">
           <label>Roll Number</label>
