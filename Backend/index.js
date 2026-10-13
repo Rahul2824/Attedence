@@ -61,7 +61,23 @@ app.post("/api/students", async (req, res) => {
       });
     }
 
-    const result = await db.collection("First-year-Data").insertOne({
+    // Year nusar collection select hoil
+    const collections = {
+      "First Year": "First-year-Data",
+      "Second Year": "Second-year-Data",
+      "Third Year": "Third-year-Data",
+      "Final Year": "Final-year-Data"
+    };
+
+    const collectionName = collections[year];
+
+    if (!collectionName) {
+      return res.status(400).json({
+        message: "Invalid year"
+      });
+    }
+
+    const result = await db.collection(collectionName).insertOne({
       name,
       rollNo: Number(rollNo),
       email,
@@ -71,11 +87,12 @@ app.post("/api/students", async (req, res) => {
 
     res.status(201).json({
       message: "Student added successfully",
+      collection: collectionName,
       studentId: result.insertedId
     });
 
   } catch (error) {
-    console.error("Error adding student:", error);
+    console.error("Add Student Error:", error);
 
     res.status(500).json({
       message: "Failed to add student"

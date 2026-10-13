@@ -72,12 +72,14 @@ function AddStudent() {
 
         <label>Year</label>
         <select
-          value={year}
-          onChange={(e) => setYear(e.target.value)}
-        >
-          <option>First Year</option>
-         
-        </select>
+  value={year}
+  onChange={(e) => setYear(e.target.value)}
+>
+  <option value="First Year">First Year</option>
+  <option value="Second Year">Second Year</option>
+  <option value="Third Year">Third Year</option>
+  <option value="Final Year">Final Year</option>
+</select>
 
         <button type="submit">+ Add Student</button>
       </form>
