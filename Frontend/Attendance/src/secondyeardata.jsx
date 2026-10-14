@@ -22,6 +22,27 @@ function Secondyeardata() {
                             <td>24067621242043</td>
                             <td>Present</td>
                         </tr>
+                        <tr>
+                            <td>01</td>
+                            <td>Rahul Prakash patil</td>
+                            <td>Second year</td>
+                            <td>24067621242043</td>
+                            <td>Present</td>
+                        </tr>
+                        <tr>
+                            <td>01</td>
+                            <td>Rahul Prakash patil</td>
+                            <td>Second year</td>
+                            <td>24067621242043</td>
+                            <td>Present</td>
+                        </tr>
+                        <tr>
+                            <td>01</td>
+                            <td>Rahul Prakash patil</td>
+                            <td>Second year</td>
+                            <td>24067621242043</td>
+                            <td>Present</td>
+                        </tr>
                      
                     </tbody>
                 </table>
