@@ -19,7 +19,23 @@ function Finalyeardata() {
                             <td>Rahul Prakash patil</td>
                             <td>Final year</td>
                             <td>24067621242043</td>
-                            <td>Present</td>
+                             <button
+                  className={
+                    student.status === "Present"
+                      ? "present-btn"
+                      : "absent-btn"
+                  }
+                  onClick={() =>
+                    markAttendance(
+                      student.id,
+                      student.status === "Present"
+                        ? "Absent"
+                        : "Present"
+                    )
+                  }
+                >
+                  {student.status || "Absent"}
+                </button>
                         </tr>
                         <tr>
                             <td>02</td>
@@ -91,41 +107,7 @@ function Finalyeardata() {
                             <td>24067621242043</td>
                             <td>Present</td>
                         </tr>
-                        <tr>
-                            <td>03</td>
-                            <td>Rahul Prakash patil</td>
-                            <td>Final year</td>
-                            <td>24067621242043</td>
-                            <td>Present</td>
-                        </tr>
-                        <tr>
-                            <td>03</td>
-                            <td>Rahul Prakash patil</td>
-                            <td>Final year</td>
-                            <td>24067621242043</td>
-                            <td>Present</td>
-                        </tr>
-                        <tr>
-                            <td>03</td>
-                            <td>Rahul Prakash patil</td>
-                            <td>Final year</td>
-                            <td>24067621242043</td>
-                            <td>Present</td>
-                        </tr>
-                        <tr>
-                            <td>03</td>
-                            <td>Rahul Prakash patil</td>
-                            <td>Final year</td>
-                            <td>24067621242043</td>
-                            <td>Present</td>
-                        </tr>
-                        <tr>
-                            <td>03</td>
-                            <td>Rahul Prakash patil</td>
-                            <td>Final year</td>
-                            <td>24067621242043</td>
-                            <td>Present</td>
-                        </tr>
+                      
                     </tbody>
                 </table>
             </div>
