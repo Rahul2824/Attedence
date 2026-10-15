@@ -22,7 +22,6 @@ const PORT = process.env.PORT || 5000;
 const url = process.env.MONGO_URL;
 
 const dbname = "Collage-Data";
-const collectionname = "Principal";
 const client = new MongoClient(url);
 
 async function Connection() {
@@ -35,17 +34,15 @@ async function Connection() {
     throw error;
   }
 }
+app.get("/Attendance/Collage-Data/First-year-Data",async(req,resp)=>{
+const db = await Connection();
+const data = await db
+.collection("First-year-Data")
+.find({})
+.toArray();
+resp.status(200).json(data)
+})
 
-app.get("/Attendance/Collage-Data/Third-year-Data", async (req, resp) => {
-  const db = await Connection();
-
-  const data = await db
-    .collection("Third-year-Data")
-    .find({})
-    .toArray();
-
-  resp.status(200).json(data);
-});
 app.post("/api/students", async (req, res) => {
   try {
     const db = await Connection();

@@ -1,39 +1,21 @@
-import { useState } from "react";
+import axios from "axios";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+
 function Firstyeardata() {
-  const [students, setStudents] = useState([
-    {
-      id: 1,
-      name: "Rahul Prakash Patil",
-      rollNo: 1,
-      year: "First year",
-      prn: "24067621242043",
-      status: "",
-    },
-    {
-      id: 2,
-      name: "Amit Sharma",
-      rollNo: 2,
-      year: "First year",
-      prn: "24067621242044",
-      status: "",
-    },
-    {
-      id: 3,
-      name: "Sneha Patil",
-      rollNo: 3,
-      year: "First year",
-      prn: "24067621242045",
-      status: "",
-    },
-  ]);
+  const [data, setdata] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/Attendance/Collage-Data/First-year-Data")
+      .then((resp) => setdata(resp.data))
+      .catch((error) => console.log(error));
+  }, []);
 
   const markAttendance = (id, status) => {
-    setStudents((prevStudents) =>
-      prevStudents.map((student) =>
-        student.id === id
-          ? { ...student, status }
-          : student
+    setdata((prev) =>
+      prev.map((student) =>
+        student._id === id ? { ...student, status } : student
       )
     );
   };
@@ -41,10 +23,14 @@ function Firstyeardata() {
   return (
     <div className="student-table">
       <div className="add">
-      <h1>This is First Year Data</h1>
-           <Link to="/Addstudent" ><button>+</button></Link>    </div>
+        <h1>This is First Year Data</h1>
+        <Link to="/Addstudent">
+          <button type="button">+</button>
+        </Link>
+      </div>
+
       <table>
-        <thead> 
+        <thead>
           <tr>
             <th>Roll Number</th>
             <th>Name of the Student</th>
@@ -55,34 +41,40 @@ function Firstyeardata() {
         </thead>
 
         <tbody>
-          {students.map((student) => (
-            <tr key={student.id}>
-              <td>{student.rollNo}</td>
-              <td>{student.name}</td>
-              <td>{student.year}</td>
-              <td>{student.prn}</td>
-              
-              <td>
-                <button
-                  className={
-                    student.status === "Present"
-                      ? "present-btn"
-                      : "absent-btn"
-                  }
-                  onClick={() =>
-                    markAttendance(
-                      student.id,
-                      student.status === "Present"
-                        ? "Absent"
-                        : "Present"
-                    )
-                  }
-                >
-                  {student.status || "Absent"}
-                </button>
-              </td>
+          {data.length === 0 ? (
+            <tr>
+              <td colSpan="5">No student data found.</td>
             </tr>
-          ))}
+          ) : (
+            data.map((student) => (
+              <tr key={student._id}>
+                <td>{student.rollNo}</td>
+                <td>{student.name}</td>
+                <td>{student.year}</td>
+                <td>{student.prn}</td>
+                <td>
+                  <button
+                    type="button"
+                    className={
+                      student.status === "Present"
+                        ? "present-btn"
+                        : "absent-btn"
+                    }
+                    onClick={() =>
+                      markAttendance(
+                        student._id,
+                        student.status === "Present"
+                          ? "Absent"
+                          : "Present"
+                      )
+                    }
+                  >
+                    {student.status || "Absent"}
+                  </button>
+                </td>
+              </tr>
+            ))
+          )}
         </tbody>
       </table>
     </div>
