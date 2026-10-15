@@ -42,6 +42,15 @@ const data = await db
 .toArray();
 resp.status(200).json(data)
 })
+app.get("/Attendance/Collage-Data/Second-year-Data", async (req, resp) => {
+  const db =await Connection();
+  const data= await db.collection("Second-year-Data")
+  .find({})
+  .toArray()
+  resp.status(200).json(data)
+})
+
+
 app.get("/Attendance/Collage-Data/Third-year-Data", async (req, resp) => {
   const db = await Connection();
 
