@@ -36,19 +36,16 @@ async function Connection() {
   }
 }
 
-app.get("/Collage-Data/Principal",async(req,resp)=>{
-  try {
-    const db =await Connection();
-    const collection = db.collection(collectionname)
-     const data = await collection.find({}).toArray();
+app.get("/Attendance/Collage-Data/Third-year-Data", async (req, resp) => {
+  const db = await Connection();
 
-     console.log("DATA FROM MONGODB:", data);
+  const data = await db
+    .collection("Third-year-Data")
+    .find({})
+    .toArray();
 
-    resp.status(200).json(data);
-  } catch (error) {
-     console.log("GET ERROR:", error);
-  }
-})
+  resp.status(200).json(data);
+});
 app.post("/api/students", async (req, res) => {
   try {
     const db = await Connection();

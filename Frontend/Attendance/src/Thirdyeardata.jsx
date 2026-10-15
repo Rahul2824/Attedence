@@ -1,4 +1,12 @@
+import { useEffect } from "react";
+import { useState } from "react";
+import axios from "axios";
 function Thirdyeardata() {
+    const [data,setdata]=useState([])
+    useEffect(()=>{
+        axios.get("http://localhost:5000/Attendance/Collage-Data/Third-year-Data")
+        .then((resp)=>setdata(resp.data));
+    },[])
     return (
         <>
             <div className="student-table">
@@ -14,27 +22,21 @@ function Thirdyeardata() {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>01</td>
-                            <td>Rahul Prakash patil</td>
-                            <td>Third year</td>
-                            <td>24067621242043</td>
-                            <td>Present</td>
-                        </tr>
-                        <tr>
-                            <td>02</td>
-                            <td>Rahul Prakash patil</td>
-                            <td>Third year</td>
-                            <td>24067621242043</td>
-                            <td>Present</td>
-                        </tr>
-                        <tr>
-                            <td>03</td>
-                            <td>Rahul Prakash patil</td>
-                            <td>Third year</td>
-                            <td>24067621242043</td>
-                            <td>Present</td>
-                        </tr>
+                        {data.length === 0 ? (
+              <tr>
+                <td colSpan="5">No student data found.</td>
+              </tr>
+            ) : (
+              data.map((student, index) => (
+                <tr key={student._id}>
+                  <td>{index + 1}</td>
+                  <td>{student.rollNo}</td>
+                  <td>{student.name}</td>
+                  <td>{student.email}</td>
+                  <td>{student.year}</td>
+                </tr>
+              ))
+            )}
                     </tbody>
                 </table>
             </div>
