@@ -1,4 +1,12 @@
+import axios  from "axios";
+import { useState } from "react";
+import { useEffect } from "react";
 function Finalyeardata() {
+const [data,setdata]= useState([]);
+useEffect(()=>{
+axios.get("http://localhost:5000/Attendance/Collage-Data/Final-year-Data")
+.then((resp)=>setdata(resp.data))
+},[])
     return (
         <>
             <div className="student-table">
@@ -14,27 +22,22 @@ function Finalyeardata() {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>01</td>
-                            <td>Rahul Prakash patil</td>
-                            <td>Final year</td>
-                            <td>24067621242043</td>
-                            <td>Present</td>
-                        </tr>
-                        <tr>
-                            <td>02</td>
-                            <td>Rahul Prakash patil</td>
-                            <td>Final year</td>
-                            <td>24067621242043</td>
-                            <td>Present</td>
-                        </tr>
-                        <tr>
-                            <td>03</td>
-                            <td>Rahul Prakash patil</td>
-                            <td>Final year</td>
-                            <td>24067621242043</td>
-                            <td>Present</td>
-                        </tr>
+                         {data.length===0?(
+                            <tr>
+                                <td colSpan="5">no student are added</td>
+                            </tr>
+                        ):(
+                            data.map((student,index)=>(
+                                <tr key={student._id}>
+                                    <td>{index + 1}</td>
+                                    <td>{student.name}</td>
+                                    <td>{student.year}</td>
+                                    <td>{student.email}</td>
+                                    <td>{student.rollno}</td>
+                                </tr>
+                            ))
+                        )}
+                      
                      
                       
                     </tbody>
