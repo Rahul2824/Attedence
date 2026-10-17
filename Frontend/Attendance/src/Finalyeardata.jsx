@@ -40,8 +40,24 @@ axios.get("http://localhost:5000/Attendance/Collage-Data/Final-year-Data")
                                     <td>{student.name}</td>
                                     <td>{student.year}</td>
                                     <td>{student.email}</td>
-                                    <td>{student.rollno}</td>
-                                </tr>
+ <td><button
+                    type="button"
+                    className={
+                      student.status === "Present"
+                        ? "present-btn"
+                        : "absent-btn"
+                    }
+                    onClick={() =>
+                      markAttendance(
+                        student._id,
+                        student.status === "Present"
+                          ? "Absent"
+                          : "Present"
+                      )
+                    }
+                  >
+                    {student.status || "Absent"}
+                  </button></td>                                </tr>
                             ))
                         )}
                       
