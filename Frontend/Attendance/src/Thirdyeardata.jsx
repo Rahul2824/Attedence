@@ -40,7 +40,24 @@ function Thirdyeardata() {
                   <td>{student.rollNo}</td>
                   <td>{student.name}</td>
                   <td>{student.email}</td>
-                  <td>{student.year}</td>
+                  <td><button
+                    type="button"
+                    className={
+                      student.status === "Present"
+                        ? "present-btn"
+                        : "absent-btn"
+                    }
+                    onClick={() =>
+                      markAttendance(
+                        student._id,
+                        student.status === "Present"
+                          ? "Absent"
+                          : "Present"
+                      )
+                    }
+                  >
+                    {student.status || "Absent"}
+                  </button></td>
                 </tr>
               ))
             )}
