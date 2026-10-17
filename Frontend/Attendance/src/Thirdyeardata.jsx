@@ -7,6 +7,13 @@ function Thirdyeardata() {
         axios.get("http://localhost:5000/Attendance/Collage-Data/Third-year-Data")
         .then((resp)=>setdata(resp.data));
     },[])
+      const markAttendance = (id, status) => {
+    setdata((prev) =>
+      prev.map((student) =>
+        student._id === id ? { ...student, status } : student
+      )
+    );
+  };
     return (
         <>
             <div className="student-table">

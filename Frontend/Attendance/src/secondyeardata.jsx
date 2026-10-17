@@ -8,6 +8,13 @@ function Secondyeardata() {
       .get("http://localhost:5000/Attendance/Collage-Data/Second-year-Data")
       .then((resp) => setdata(resp.data));
   }, []);
+    const markAttendance = (id, status) => {
+    setdata((prev) =>
+      prev.map((student) =>
+        student._id === id ? { ...student, status } : student
+      )
+    );
+  };
   return (
     <>
       <div className="student-table">
@@ -34,7 +41,25 @@ function Secondyeardata() {
                   <td>{Student.name}</td>
                   <td>{Student.year}</td>
                   <td>{Student.email}</td>
-                  <td>{Student.rollno}</td>
+                  <td><button
+                    type="button"
+                    className={
+                      Student.status === "Present"
+                        ? "present-btn"
+                        : "absent-btn"
+                    }
+                    onClick={() =>
+                      markAttendance(
+                        Student._id,
+                        Student.status === "Present"
+                          ? "Absent"
+                          : "Present"
+                      )
+                    }
+                  >
+                    {Student.status || "Absent"}
+                  </button></td>
+                   
                 </tr>
               ))
             )}
