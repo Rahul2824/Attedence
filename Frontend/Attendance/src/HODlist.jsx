@@ -119,6 +119,72 @@ function HODlist() {
                             <td>24067621242017</td>
                             <td>Teacher@123</td>
                         </tr>
+                        <tr>
+                            <td>03</td>
+                            <td> Kodag sar</td>
+                            <td>2022</td>
+                            <td>24067621242017</td>
+                            <td>Teacher@123</td>
+                        </tr>
+                      
+                        <tr>
+                            <td>03</td>
+                            <td> Kodag sar</td>
+                            <td>2022</td>
+                            <td>24067621242017</td>
+                            <td>Teacher@123</td>
+                        </tr>
+                        <tr>
+                            <td>03</td>
+                            <td> Kodag sar</td>
+                            <td>2022</td>
+                            <td>24067621242017</td>
+                            <td>Teacher@123</td>
+                        </tr>
+                        <tr>
+                            <td>03</td>
+                            <td> Kodag sar</td>
+                            <td>2022</td>
+                            <td>24067621242017</td>
+                            <td>Teacher@123</td>
+                        </tr>
+                      
+                        <tr>
+                            <td>03</td>
+                            <td> Kodag sar</td>
+                            <td>2022</td>
+                            <td>24067621242017</td>
+                            <td>Teacher@123</td>
+                        </tr>
+                        <tr>
+                            <td>03</td>
+                            <td> Kodag sar</td>
+                            <td>2022</td>
+                            <td>24067621242017</td>
+                            <td>Teacher@123</td>
+                        </tr>
+                        <tr>
+                            <td>03</td>
+                            <td> Kodag sar</td>
+                            <td>2022</td>
+                            <td>24067621242017</td>
+                            <td>Teacher@123</td>
+                        </tr>
+                      
+                        <tr>
+                            <td>03</td>
+                            <td> Kodag sar</td>
+                            <td>2022</td>
+                            <td>24067621242017</td>
+                            <td>Teacher@123</td>
+                        </tr>
+                        <tr>
+                            <td>03</td>
+                            <td> Kodag sar</td>
+                            <td>2022</td>
+                            <td>24067621242017</td>
+                            <td>Teacher@123</td>
+                        </tr>
                       
                        
                     </tbody>
