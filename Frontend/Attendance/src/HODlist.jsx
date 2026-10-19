@@ -14,62 +14,7 @@ function HODlist() {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>01</td>
-                            <td>Amol patil sar</td>
-                            <td>2022</td>
-                            <td>24067621242043</td>
-                            <td>Teacher@123</td>
-                        </tr>
-                        <tr>
-                            <td>01</td>
-                            <td>Amol patil sar</td>
-                            <td>2022</td>
-                            <td>24067621242043</td>
-                            <td>Teacher@123</td>
-                        </tr>
-                        <tr>
-                            <td>01</td>
-                            <td>Amol patil sar</td>
-                            <td>2022</td>
-                            <td>24067621242043</td>
-                            <td>Teacher@123</td>
-                        </tr>
-                        <tr>
-                            <td>01</td>
-                            <td>Amol patil sar</td>
-                            <td>2022</td>
-                            <td>24067621242043</td>
-                            <td>Teacher@123</td>
-                        </tr>
-                        <tr>
-                            <td>01</td>
-                            <td>Amol patil sar</td>
-                            <td>2022</td>
-                            <td>24067621242043</td>
-                            <td>Teacher@123</td>
-                        </tr>
-                        <tr>
-                            <td>01</td>
-                            <td>Amol patil sar</td>
-                            <td>2022</td>
-                            <td>24067621242043</td>
-                            <td>Teacher@123</td>
-                        </tr>
-                        <tr>
-                            <td>01</td>
-                            <td>Amol patil sar</td>
-                            <td>2022</td>
-                            <td>24067621242043</td>
-                            <td>Teacher@123</td>
-                        </tr>
-                        <tr>
-                            <td>02</td>
-                            <td>Yogesh patil sar</td>
-                            <td>2024</td>
-                            <td>24067621242044</td>
-                            <td>Teacher@123</td>
-                        </tr>
+                       
                         <tr>
                             <td>03</td>
                             <td> Kodag sar</td>
