@@ -35,15 +35,38 @@ async function Connection() {
   }
 }
 
+app.get(
+  "/Attendance/Collage-Data/First-year-Data/:division",
+  async (req, res) => {
+    try {
+      const db = await Connection();
 
-app.get("/Attendance/Collage-Data/First-year-Data",async(req,resp)=>{
-const db = await Connection();
-const data = await db
-.collection("First-year-Data")
-.find({})
-.toArray();
-resp.status(200).json(data)
-})
+      const division = req.params.division.toUpperCase();
+
+      // Only allow A, B, C, D
+      if (!["A", "B", "C", "D"].includes(division)) {
+        return res.status(400).json({
+          message: "Invalid division",
+        });
+      }
+
+      const collectionName = `First-year-Data(${division})`;
+
+      const data = await db
+        .collection(collectionName)
+        .find({})
+        .toArray();
+
+      res.status(200).json(data);
+    } catch (error) {
+      console.error("Data fetch error:", error);
+
+      res.status(500).json({
+        message: "Failed to fetch student data",
+      });
+    }
+  }
+);
 app.get("/Attendance/Collage-Data/Second-year-Data", async (req, resp) => {
   const db =await Connection();
   const data= await db.collection("Second-year-Data")

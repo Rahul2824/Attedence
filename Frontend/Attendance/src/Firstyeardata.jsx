@@ -4,12 +4,23 @@ import { Link } from "react-router-dom";
 
 function Firstyeardata() {
   const [data, setdata] = useState([]);
+  const [division, setDivision] = useState("A");
+  const [loading, setLoading] = useState(false);
 
+ const fetchData = async (selectedDivision) => {
+  try {
+    const resp = await axios.get(
+      `http://localhost:5000/Attendance/Collage-Data/First-year-Data/${selectedDivision}`
+    );
+
+    setdata(resp.data);
+    setDivision(selectedDivision);
+  } catch (error) {
+    console.log(error);
+  }
+};
   useEffect(() => {
-    axios
-      .get("http://localhost:5000/Attendance/Collage-Data/First-year-Data")
-      .then((resp) => setdata(resp.data))
-      .catch((error) => console.log(error));
+    fetchData("A");
   }, []);
 
   const markAttendance = (id, status) => {
@@ -23,11 +34,13 @@ function Firstyeardata() {
   return (
     <div className="student-table">
       <div className="add">
-        <h1>This is First Year Data</h1>
-       <button>A</button>
-       <button>B</button>
-       <button>C</button>
-       <button>D</button>
+        <h1>First Year Data - Division {division}</h1>
+
+      <button onClick={() => fetchData("A")}>A</button>
+<button onClick={() => fetchData("B")}>B</button>
+<button onClick={() => fetchData("C")}>C</button>
+<button onClick={() => fetchData("D")}>D</button>
+
         <Link to="/Addstudent">
           <button type="button">+</button>
         </Link>
@@ -45,7 +58,11 @@ function Firstyeardata() {
         </thead>
 
         <tbody>
-          {data.length === 0 ? (
+          {loading ? (
+            <tr>
+              <td colSpan="5">Loading student data...</td>
+            </tr>
+          ) : data.length === 0 ? (
             <tr>
               <td colSpan="5">No student data found.</td>
             </tr>
@@ -56,6 +73,7 @@ function Firstyeardata() {
                 <td>{student.name}</td>
                 <td>{student.year}</td>
                 <td>{student.prn}</td>
+
                 <td>
                   <button
                     type="button"
