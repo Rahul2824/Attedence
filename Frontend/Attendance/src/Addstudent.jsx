@@ -24,7 +24,7 @@ function AddStudent() {
     setName("");
     setRollNo("");
     setEmail("");
-    setYear("First Year");
+    setYear("First Year(A)");
 
     const result = await axios.post("http://localhost:5000/api/students",newStudent)
     console.log(result.data)};
@@ -75,7 +75,10 @@ function AddStudent() {
   value={year}
   onChange={(e) => setYear(e.target.value)}
 >
-  <option value="First Year">First Year</option>
+  <option value="First Year(A)">First Year(A)</option>
+  <option value="First Year(B)">First Year(B)</option>
+  <option value="First Year(C)">First Year(C)</option>
+  <option value="First Year(D)">First Year(D)</option>
   <option value="Second Year">Second Year</option>
   <option value="Third Year">Third Year</option>
   <option value="Final Year">Final Year</option>

@@ -82,7 +82,10 @@ app.post("/api/students", async (req, res) => {
 
     // Year nusar collection select hoil
     const collections = {
-      "First Year": "First-year-Data",
+      "First Year(A)": "First-year-Data(A)",
+      "First Year(B)": "First-year-Data(B)",
+      "First Year(C)": "First-year-Data(C)",
+      "First Year(D)": "First-year-Data(D)",
       "Second Year": "Second-year-Data",
       "Third Year": "Third-year-Data",
       "Final Year": "Final-year-Data"

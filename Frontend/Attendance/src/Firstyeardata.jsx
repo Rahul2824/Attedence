@@ -24,6 +24,10 @@ function Firstyeardata() {
     <div className="student-table">
       <div className="add">
         <h1>This is First Year Data</h1>
+       <button>A</button>
+       <button>B</button>
+       <button>C</button>
+       <button>D</button>
         <Link to="/Addstudent">
           <button type="button">+</button>
         </Link>
