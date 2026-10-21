@@ -7,50 +7,48 @@ function Firstyeardata() {
   const [division, setDivision] = useState("A");
   const [loading, setLoading] = useState(false);
 
- const fetchData = async (selectedDivision) => {
-  try {
-    const resp = await axios.get(
-      `http://localhost:5000/Attendance/Collage-Data/First-year-Data/${selectedDivision}`
-    );
+  const fetchData = async (selectedDivision) => {
+    try {
+      const resp = await axios.get(
+        `http://localhost:5000/Attendance/Collage-Data/First-year-Data/${selectedDivision}`,
+      );
 
-    setdata(resp.data);
-    setDivision(selectedDivision);
-  } catch (error) {
-    console.log(error);
-  }
-};
+      setdata(resp.data);
+      setDivision(selectedDivision);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   useEffect(() => {
     fetchData("A");
   }, []);
 
- const markAttendance = async (id, status) => {
-  try {
-    await axios.patch(
-      `http://localhost:5000/Attendance/Collage-Data/First-year-Data/${division}/${id}/status`,
-      { status }
-    );
+  const markAttendance = async (id, status) => {
+    try {
+      await axios.patch(
+        `http://localhost:5000/Attendance/Collage-Data/First-year-Data/${division}/${id}/status`,
+        { status },
+      );
 
-    setData((prev) =>
-      prev.map((student) =>
-        student._id === id
-          ? { ...student, status }
-          : student
-      )
-    );
-  } catch (error) {
-    console.error("Attendance update failed:", error);
-  }
-};
+      setdata((prev) =>
+        prev.map((student) =>
+          student._id === id ? { ...student, status: status } : student,
+        ),
+      );
+    } catch (error) {
+      console.error("Attendance update failed:", error);
+    }
+  };
 
   return (
     <div className="student-table">
       <div className="add">
         <h1>First Year Data - Division {division}</h1>
 
-<button onClick={() => fetchData("A")}>A</button>
-<button onClick={() => fetchData("B")}>B</button>
-<button onClick={() => fetchData("C")}>C</button>
-<button onClick={() => fetchData("D")}>D</button>
+        <button onClick={() => fetchData("A")}>A</button>
+        <button onClick={() => fetchData("B")}>B</button>
+        <button onClick={() => fetchData("C")}>C</button>
+        <button onClick={() => fetchData("D")}>D</button>
 
         <Link to="/Addstudent">
           <button type="button">+</button>
@@ -96,9 +94,7 @@ function Firstyeardata() {
                     onClick={() =>
                       markAttendance(
                         student._id,
-                        student.status === "Present"
-                          ? "Absent"
-                          : "Present"
+                        student.status === "Present" ? "Absent" : "Present",
                       )
                     }
                   >

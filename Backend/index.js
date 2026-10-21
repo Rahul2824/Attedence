@@ -45,18 +45,6 @@ app.patch(
       const { division, id } = req.params;
       const { status } = req.body;
 
-      if (!["A", "B", "C", "D"].includes(division.toUpperCase())) {
-        return res.status(400).json({ message: "Invalid division" });
-      }
-
-      if (!["Present", "Absent"].includes(status)) {
-        return res.status(400).json({ message: "Invalid status" });
-      }
-
-      if (!ObjectId.isValid(id)) {
-        return res.status(400).json({ message: "Invalid student ID" });
-      }
-
       const result = await db
         .collection(`First-year-Data(${division.toUpperCase()})`)
         .updateOne(
