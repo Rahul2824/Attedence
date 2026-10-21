@@ -36,6 +36,58 @@ async function Connection() {
 }
 
 const { ObjectId } = require("mongodb");
+app.patch(
+  "/Attendance/Collage-Data/Second-year-Data/:id/:lectures/status",
+  async (req, res) => {
+    try {
+      const db = await Connection();
+
+      const { id, lectures } = req.params;
+      const { status } = req.body;
+
+      const allowedLectures = [
+        "lecture-1",
+        "lecture-2",
+        "lecture-3",
+        "lecture-4",
+        "lecture-5",
+        "lecture-6",
+      ];
+
+      if (!allowedLectures.includes(lectures)) {
+        return res.status(400).json({ message: "Invalid lecture" });
+      }
+
+      if (!["Present", "Absent"].includes(status)) {
+        return res.status(400).json({ message: "Invalid status" });
+      }
+
+      if (!ObjectId.isValid(id)) {
+        return res.status(400).json({ message: "Invalid student ID" });
+      }
+
+      const result = await db
+        .collection("Second-year-Data")
+        .updateOne(
+          { _id: new ObjectId(id) },
+          { $set: { [lectures]: status } }
+        );
+
+      if (result.matchedCount === 0) {
+        return res.status(404).json({ message: "Student not found" });
+      }
+
+      res.status(200).json({
+        message: "Attendance updated successfully",
+        lectures,
+        status,
+      });
+    } catch (error) {
+      console.error("PATCH Error:", error);
+      res.status(500).json({ message: "Failed to update attendance" });
+    }
+  }
+);
 
 app.patch(
   "/Attendance/Collage-Data/First-year-Data/:division/:id/status",

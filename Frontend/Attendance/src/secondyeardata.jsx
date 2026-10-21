@@ -1,72 +1,113 @@
+
 import axios from "axios";
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
 function Secondyeardata() {
   const [data, setdata] = useState([]);
+
+  const lectures = [
+    "lecture-1",
+    "lecture-2",
+    "lecture-3",
+    "lecture-4",
+    "lecture-5",
+    "lecture-6",
+  ];
+
   useEffect(() => {
     axios
-      .get("http://localhost:5000/Attendance/Collage-Data/Second-year-Data")
-      .then((resp) => setdata(resp.data));
-  }, []);
-    const markAttendance = (id, status) => {
-    setdata((prev) =>
-      prev.map((student) =>
-        student._id === id ? { ...student, status } : student
+      .get(
+        "http://localhost:5000/Attendance/Collage-Data/Second-year-Data"
       )
-    );
+      .then((resp) => setdata(resp.data))
+      .catch((error) => {
+        console.error("Data fetch failed:", error);
+      });
+  }, []);
+
+  const markAttendance = async (id, lecture, status) => {
+    try {
+      await axios.patch(
+        `http://localhost:5000/Attendance/Collage-Data/Second-year-Data/${id}/${encodeURIComponent(lecture)}/status`,
+        { status }
+      );
+
+      setdata((prev) =>
+        prev.map((student) =>
+          student._id === id
+            ? { ...student, [lecture]: status }
+            : student
+        )
+      );
+    } catch (error) {
+      console.error(
+        "Attendance update failed:",
+        error.response?.data || error.message
+      );
+
+      alert("Attendance update failed!");
+    }
   };
+
   return (
-    <>
-      <div className="student-table">
-        <h1>this is Second year data</h1>
-        <table>
-          <thead>
+    <div className="student-table">
+      <h1>This is Second Year Data</h1>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Roll Number</th>
+            <th>Name of the Student</th>
+            <th>Year</th>
+
+            {lectures.map((lecture) => (
+              <th key={lecture}>{lecture}</th>
+            ))}
+          </tr>
+        </thead>
+
+        <tbody>
+          {data.length === 0 ? (
             <tr>
-              <td>Roll number</td>
-              <td>Name of the student</td>
-              <td>Year</td>
-              <td>PRN</td>
-              <td>Status</td>
+              <td colSpan={9}>No student data found.</td>
             </tr>
-          </thead>
-          <tbody>
-            {data.length === 0 ? (
-              <tr>
-                <td colSpan="5">No student data found.</td>
+          ) : (
+            data.map((student, index) => (
+              <tr key={student._id}>
+                <td>{index + 1}</td>
+                <td>{student.name}</td>
+                <td>{student.year}</td>
+
+                {lectures.map((lecture) => (
+                  <td key={lecture}>
+                    <button
+                      type="button"
+                      className={
+                        student[lecture] === "Present"
+                          ? "present-btn"
+                          : "absent-btn"
+                      }
+                      onClick={() =>
+                        markAttendance(
+                          student._id,
+                          lecture,
+                          student[lecture] === "Present"
+                            ? "Absent"
+                            : "Present"
+                        )
+                      }
+                    >
+                      {student[lecture] || "Absent"}
+                    </button>
+                  </td>
+                ))}
               </tr>
-            ) : (
-              data.map((Student, index) => (
-                <tr key={Student._id}>
-                  <td>{index + 1}</td>
-                  <td>{Student.name}</td>
-                  <td>{Student.year}</td>
-                  <td>{Student.email}</td>
-                  <td><button
-                    type="button"
-                    className={
-                      Student.status === "Present"
-                        ? "present-btn"
-                        : "absent-btn"
-                    }
-                    onClick={() =>
-                      markAttendance(
-                        Student._id,
-                        Student.status === "Present"
-                          ? "Absent"
-                          : "Present"
-                      )
-                    }
-                  >
-                    {Student.status || "Absent"}
-                  </button></td>
-                   
-                </tr>
-              ))
-            )}
-          </tbody>
-        </table>
-      </div>
-    </>
+            ))
+          )}
+        </tbody>
+      </table>
+    </div>
   );
 }
+
 export default Secondyeardata;
