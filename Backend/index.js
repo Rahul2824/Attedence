@@ -35,6 +35,47 @@ async function Connection() {
   }
 }
 
+const { ObjectId } = require("mongodb");
+
+app.patch(
+  "/Attendance/Collage-Data/First-year-Data/:division/:id/status",
+  async (req, res) => {
+    try {
+      const db = await Connection();
+      const { division, id } = req.params;
+      const { status } = req.body;
+
+      if (!["A", "B", "C", "D"].includes(division.toUpperCase())) {
+        return res.status(400).json({ message: "Invalid division" });
+      }
+
+      if (!["Present", "Absent"].includes(status)) {
+        return res.status(400).json({ message: "Invalid status" });
+      }
+
+      if (!ObjectId.isValid(id)) {
+        return res.status(400).json({ message: "Invalid student ID" });
+      }
+
+      const result = await db
+        .collection(`First-year-Data(${division.toUpperCase()})`)
+        .updateOne(
+          { _id: new ObjectId(id) },
+          { $set: { status } }
+        );
+
+      if (result.matchedCount === 0) {
+        return res.status(404).json({ message: "Student not found" });
+      }
+
+      res.status(200).json({ message: "Attendance updated", status });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: "Failed to update attendance" });
+    }
+  }
+);
+
 app.get(
   "/Attendance/Collage-Data/First-year-Data/:division",
   async (req, res) => {

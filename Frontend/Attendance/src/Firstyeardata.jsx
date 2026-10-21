@@ -23,20 +23,31 @@ function Firstyeardata() {
     fetchData("A");
   }, []);
 
-  const markAttendance = (id, status) => {
-    setdata((prev) =>
+ const markAttendance = async (id, status) => {
+  try {
+    await axios.patch(
+      `http://localhost:5000/Attendance/Collage-Data/First-year-Data/${division}/${id}/status`,
+      { status }
+    );
+
+    setData((prev) =>
       prev.map((student) =>
-        student._id === id ? { ...student, status } : student
+        student._id === id
+          ? { ...student, status }
+          : student
       )
     );
-  };
+  } catch (error) {
+    console.error("Attendance update failed:", error);
+  }
+};
 
   return (
     <div className="student-table">
       <div className="add">
         <h1>First Year Data - Division {division}</h1>
 
-      <button onClick={() => fetchData("A")}>A</button>
+<button onClick={() => fetchData("A")}>A</button>
 <button onClick={() => fetchData("B")}>B</button>
 <button onClick={() => fetchData("C")}>C</button>
 <button onClick={() => fetchData("D")}>D</button>
