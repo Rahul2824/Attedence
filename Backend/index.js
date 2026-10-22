@@ -36,14 +36,22 @@ async function Connection() {
 }
 
 const { ObjectId } = require("mongodb");
+
 app.patch(
-  "/Attendance/Collage-Data/Second-year-Data/:id/:lectures/status",
+  "/Attendance/Collage-Data/:year/:id/:lectures/status",
   async (req, res) => {
     try {
       const db = await Connection();
 
-      const { id, lectures } = req.params;
+      const { year, id, lectures } = req.params;
       const { status } = req.body;
+
+      const allowedYears = [
+        "First-year-Data",
+        "Second-year-Data",
+        "Third-year-Data",
+        "Final-year-Data",
+      ];
 
       const allowedLectures = [
         "lecture-1",
@@ -53,6 +61,10 @@ app.patch(
         "lecture-5",
         "lecture-6",
       ];
+
+      if (!allowedYears.includes(year)) {
+        return res.status(400).json({ message: "Invalid year" });
+      }
 
       if (!allowedLectures.includes(lectures)) {
         return res.status(400).json({ message: "Invalid lecture" });
@@ -66,12 +78,10 @@ app.patch(
         return res.status(400).json({ message: "Invalid student ID" });
       }
 
-      const result = await db
-        .collection("Second-year-Data")
-        .updateOne(
-          { _id: new ObjectId(id) },
-          { $set: { [lectures]: status } }
-        );
+      const result = await db.collection(year).updateOne(
+        { _id: new ObjectId(id) },
+        { $set: { [lectures]: status } }
+      );
 
       if (result.matchedCount === 0) {
         return res.status(404).json({ message: "Student not found" });
@@ -79,6 +89,7 @@ app.patch(
 
       res.status(200).json({
         message: "Attendance updated successfully",
+        year,
         lectures,
         status,
       });
