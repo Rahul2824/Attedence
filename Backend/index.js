@@ -250,6 +250,25 @@ app.post("/api/students", async (req, res) => {
    
  }
 passdemo()
+
+//JWT start here
+
+const jwt = require("jsonwebtoken");
+
+const token = jwt.sign(
+  {
+    userId: "12345",
+    role: "Teacher",
+  },
+  process.env.JWT_SECRET,
+  {
+    expiresIn: "1h",
+  }
+);
+
+console.log(token);
+
+
 app.listen(PORT,()=>{
   console.log(`server is running on PORT ${PORT}`);
   
