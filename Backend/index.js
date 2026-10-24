@@ -9,7 +9,7 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const { MongoClient } = require("mongodb");
-
+const bcrypt = require("bcrypt");
 const app = express();
 app.use(cors());
 app.use(express.json());
@@ -36,6 +36,7 @@ async function Connection() {
 }
 
 const { ObjectId } = require("mongodb");
+const { log } = require("console");
 
 app.patch(
   "/Attendance/Collage-Data/:year/:id/:lectures/status",
@@ -237,6 +238,18 @@ app.post("/api/students", async (req, res) => {
   }
 });
 
+// start authantication from here
+ async function passdemo() {
+   const password = "rahul@1234"
+
+   const hashpassword = await bcrypt.hash(password,10)
+   console.log("hashed password = ",hashpassword);
+   
+   const ismatch = await bcrypt.compare("rahul@1234",hashpassword)
+   console.log("password correct:",ismatch);
+   
+ }
+passdemo()
 app.listen(PORT,()=>{
   console.log(`server is running on PORT ${PORT}`);
   
