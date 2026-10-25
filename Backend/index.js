@@ -240,14 +240,14 @@ app.post("/api/students", async (req, res) => {
 
 // start authantication from here
  async function passdemo() {
-   const password = "rahul@1234"
+   const password = "rahul@1234" 
 
    const hashpassword = await bcrypt.hash(password,10)
    console.log("hashed password = ",hashpassword);
    
    const ismatch = await bcrypt.compare("rahul@1234",hashpassword)
    console.log("password correct:",ismatch);
-   
+
  }
 passdemo()
 

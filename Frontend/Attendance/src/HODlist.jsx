@@ -12,8 +12,8 @@ function HODlist() {
                             <td>Username</td>
                             <td>Password</td>
                         </tr>
-                    </thead>
-                    <tbody>
+                     </thead>
+                     <tbody>
                        
                         <tr>
                             <td>03</td>
@@ -59,12 +59,7 @@ function HODlist() {
                             <td>24067621242017</td>
                             <td>Teacher@123</td>
                         </tr>
-                      
-                        
-                      
-              
-                      
-                       
+ 
                     </tbody>
                 </table>
             </div>

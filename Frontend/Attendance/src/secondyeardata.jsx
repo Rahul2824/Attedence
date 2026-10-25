@@ -83,7 +83,7 @@ function Secondyeardata() {
                     <button
                       type="button"
                       className={
-                        student[lecture] === "Present"
+                          student[lecture] === "Present"
                           ? "present-btn"
                           : "absent-btn"
                       }
@@ -104,7 +104,7 @@ function Secondyeardata() {
               </tr>
             ))
           )}
-        </tbody>
+        </tbody>                    
       </table>
     </div>
   );

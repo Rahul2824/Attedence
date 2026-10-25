@@ -78,7 +78,7 @@ function Thirdyeardata() {
                 {lectures.map((lecture) => (
                   <td key={lecture}>
                     <button
-                      type="button"
+                      type="button" 
                       className={
                         student[lecture] === "Present"
                           ? "present-btn"
