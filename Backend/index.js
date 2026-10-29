@@ -18,6 +18,51 @@ app.use(cors({
     "http://localhost:5173"
   ]
 }));
+const PORT = process.env.PORT || 5000;
+const url = process.env.MONGO_URL;
+
+const dbname = "Collage-Data";
+const client = new MongoClient(url);
+
+async function Connection() {
+  try {
+    await client.connect();
+    console.log("connected sucessifully!");
+    return client.db(dbname);
+  } catch (error) {
+    console.log("MongoDB Connection Error:", error);
+    throw error;
+  }
+}
+
+const { ObjectId } = require("mongodb");
+const { log } = require("console");
+
+app.patch(
+  "/Attendance/Collage-Data/:year/:id/:lectures/status",
+  async (req, res) => {
+    try {
+      const db = await Connection();
+
+      const { year, id, lectures } = req.params;
+      const { status } = req.body;
+
+      const allowedYears = [
+        "First-year-Data",
+        "Second-year-Data",
+        "Third-year-Data",
+        "Final-year-Data",
+      ];
+
+      const allowedLectures = [
+        "lecture-1",
+        "lecture-2",
+        "lecture-3",
+        "lecture-4",
+        "lecture-5",
+        "lecture-6",
+      ];
+
       if (!allowedYears.includes(year)) {
         return res.status(400).json({ message: "Invalid year" });
       }
