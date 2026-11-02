@@ -209,33 +209,7 @@ app.post("/api/students", async (req, res) => {
 
     const collectionName = collections[year];
 
-    if (!collectionName) {
-      return res.status(400).json({
-        message: "Invalid year"
-      });
-    }
 
-    const result = await db.collection(collectionName).insertOne({
-      name,
-      rollNo: Number(rollNo),
-      email,
-      year,
-      createdAt: new Date()
-    });
-
-    res.status(201).json({
-      message: "Student added successfully",
-      collection: collectionName,
-      studentId: result.insertedId
-    });
-
-  } catch (error) {
-    console.error("Add Student Error:", error);
-
-    res.status(500).json({
-      message: "Failed to add student"
-    });
-  }
 });
 
 // start authantication from here
