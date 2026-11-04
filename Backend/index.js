@@ -183,20 +183,7 @@ app.get("/Attendance/Collage-Data/Final-year-Data",async(req,resp)=>{
  resp.status(200).json(data)
 })
 
-
-app.post("/api/students", async (req, res) => {
-  try {
-    const db = await Connection();
-
-    const { name, rollNo, email, year } = req.body;
-
-    if (!name || !rollNo || !email || !year) {
-      return res.status(400).json({
-        message: "All fields are required"
-      });
-    }
-
-    // Year nusar collection select hoil
+ollection select hoil
     const collections = {
       "First Year(A)": "First-year-Data(A)",
       "First Year(B)": "First-year-Data(B)",
