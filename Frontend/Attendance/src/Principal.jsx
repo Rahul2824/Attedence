@@ -21,7 +21,9 @@ function Principal() {
     <>
       <div className="navbar">
        <p><FontAwesomeIcon icon={faGraduationCap}  style={{height:"60px",width:"60px"}}/> </p> <h1>Attendance System</h1>
-      
+        <Link to="/Dashbord"> <h3  style={{ color: "White", textDecoration: "none" }}><FontAwesomeIcon icon={faHouse} /> Dashbord</h3></Link>
+        <Link to="/Principal"><h3 style={{ color: "White", textDecoration: "none" }}><FontAwesomeIcon icon={faUser} /> Principal</h3></Link>
+        <Link to="/HOD"><h3 style={{ color: "White", textDecoration: "none" }}><FontAwesomeIcon icon={faUsers} /> HOD</h3></Link>
         <Link to="/Teacher"><h3 style={{ color: "White", textDecoration: "none" }}><FontAwesomeIcon icon={faUsers} /> Teacher</h3></Link>
         <h3><FontAwesomeIcon icon={faUsers} /> Student</h3>
         <h3> <FontAwesomeIcon icon={faRightFromBracket} /> Logout</h3>
