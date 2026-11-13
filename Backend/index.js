@@ -106,7 +106,14 @@ app.get("/Attendance/Collage-Data/Second-year-Data", async (req, resp) => {
   .toArray()
   resp.status(200).json(data)
 })
-
+app.get("/Attendance/Collage-Data/Third-year-Data", async (req, resp) => {
+  const db = await Connection();
+  const data = await db
+    .collection("Third-year-Data")
+    .find({})
+    .toArray();
+  resp.status(200).json(data);
+});
 app.get("/Attendance/Collage-Data/Final-year-Data",async(req,resp)=>{
   const db = await Connection()
   const data = await db.collection("Final-year-Data")
