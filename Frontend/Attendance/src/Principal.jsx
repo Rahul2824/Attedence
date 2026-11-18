@@ -31,13 +31,7 @@ function Principal() {
       </div>
       <div>
         <h4>here is a quick overview of a Attendance</h4>
-        <div className="year">
-          <h2 className="first-year" onClick={() => setshowyeardata("First")} >First Year</h2>
-          <h2 className="second-year" onClick={() => setshowyeardata("Second")}>second year</h2>
-          <h2 className="third-year" onClick={() => setshowyeardata("Third")}>third year</h2>
-          <h2 className="final-year" onClick={() => setshowyeardata("Final")}>final year</h2>
-          <h2 className="final-year" onClick={() => setshowyeardata("HOD")}>HOD</h2>
-        </div>
+        
         <div>
           <h1>Student Data</h1> <span>view all</span>
           <div>   {showyeardata === "First" && <Firstyeardata />}
